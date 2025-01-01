@@ -1,0 +1,14 @@
+<p style="color: green"><%#= notice %></p>
+
+<%= render @post %>
+
+<div>
+  <%#= render 'reactions/options' %>
+ </div>
+
+<div class = "container">
+  <%= link_to "Editar Postulacion", edit_post_path(@post), class: "btn text-light bg-dark px-4 py-2 mb-2 mt-2  gap-3" %> 
+  <%= link_to "Retornar", posts_path, class: "btn text-light bg-dark px-4 py-2 mb-2 mt-2  gap-3" %>
+  <%#= link_to "Eliminar Postulacion", @post, method: :delete, class: "btn text-light bg-dark px-4 py-2 mb-2 mt-2  gap-3" %>
+  <%= button_to "Eliminar Postulacion", @post, method: :delete, class: "btn text-light bg-dark px-4 py-2 mb-2 mt-2  gap-3" %>
+</div>

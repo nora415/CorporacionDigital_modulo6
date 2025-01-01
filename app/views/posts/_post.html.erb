@@ -1,0 +1,40 @@
+<div id="<%= dom_id post %>">
+
+  <div class= "text-center">
+      <p class = " ">
+        <strong>Usuario:  <%= current_user.name %></strong> 
+                          
+                <% if current_user.avatar.present? %>
+                    <%= image_tag current_user.avatar, class:"w=50 height=35" %>
+                <% else %>
+                    <%= current_user.name %> no tienes foto
+                <% end %>  
+          </p>
+
+      <p>
+        <strong >  Puesto disponble:</strong>
+        <div class= "btn btn-primary  ">
+           <%= post.observation   %>
+        </div>
+       
+      </p>
+
+      <p>
+        <strong>Postulación activa:</strong>
+        <% if post.asset?%>
+          Si
+          <% else %>
+          NO
+          
+          <% end %>
+          
+        <%#= post.asset %>
+      </p>
+
+        <div  class= "btn text-light bg-dark px-2 py-2 mb-2 mt-2    " >
+              <%= render 'reactions/options' %>
+              <%= render 'reactions/counters' %>
+         </div>
+
+  </div>
+</div>

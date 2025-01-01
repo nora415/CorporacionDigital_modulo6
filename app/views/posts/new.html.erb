@@ -1,0 +1,11 @@
+<% content_for :title, "New post" %>
+
+<h3 class= "text-center">Nueva oferta de trabajo</h3>
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "Volver", posts_path, class:"btn text-light bg-dark px-4 py-2 mb-2 mt-2  gap-3" %>
+</div>

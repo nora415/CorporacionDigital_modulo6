@@ -1,0 +1,43 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class= "text-center ">
+      <div>
+        <%= form.label :Postutalación, style: "display: block",   class:"py-2"  %>
+        <%#= form.text_field :observation  %>
+          <%= form.text_area :observation ,  size: "70x3" %>
+      <%# </div> %>
+
+      <%# <div> %>
+        <%= form.label :Estado, style: "display: block", class:"py-2" %>
+        <%#= form.check_box :asset %>
+         <%= form.select :asset, [["No Activo", "0"], ["Activo", "1"]], { include_blank: "Selecciona vigencia" } , 
+         class:"py-2 mb-5"%>
+      </div>
+
+      <div>
+        <%# <p> usuario =   </p>  %>
+        <%#= user.name %> 
+      </div>
+
+      <%# <div> %>
+        <%#= form.label :user_id, style: "display: block", class:"py-2" %>
+        <%#= form.text_field :user_id %>
+      <%# </div> %>
+
+
+    <div class = "mt-4">
+      <%= form.submit "Crear / Actualizar",  class: "btn text-light bg-dark px-4 py-2 mb-2 mt-2  gap-3 "  %>
+        <%= link_to "volver a psotulaciones", posts_path,  class:"btn text-light bg-dark px-4 py-2 mb-2 mt-2  gap-3" %>
+    </div>
+  </div>
+<% end %>

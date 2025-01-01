@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg text-light bg-dark">
+ <lu class="container-fluid text-light ms-auto mb-5 mb-lg-1">
+    <%= link_to "Inicio", root_path, class:"navbar-brand text-light ms-5" %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+       </lu>  
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+        <lu class="nav-item">
+        
+        <% if user_signed_in? %>
+        <%= link_to "Postulaciones", posts_path, class:"nav-link active text-light" %>    
+        <% end %>
+       
+        </lu>
+
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown ">
+        
+        <%# <li class="nav-item text-center"> %>
+        <%#= link_to 'Tus reacciones', my_reactions_path, class: 'nav-link' %>
+        <%# </li> %>
+                
+        <a class="nav-link dropdown-toggle text-light ms-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if user_signed_in? %>
+            <% if current_user.name %>
+
+            <% if current_user.avatar.present? %>
+            Hola : <%= current_user.name %>
+            <%= image_tag current_user.avatar, class:"w-25" %>
+            <%# si %>
+            <% else %>
+            Hola <%= current_user.name %> no tienes foto
+            <% end %>  
+            <% else %>
+            Hola : <%= current_user.email %>
+            <% end %>
+            <% else %>
+            Incia Sesión o Regístrate
+            <% end %>
+            </a>
+            <ul class="dropdown-menu ">
+            <% if user_signed_in? %>
+            <li><%= button_to 'Cerrar Sesión', destroy_user_session_path, class:"dropdown-item", method: :delete %></li>
+            <% else %>
+                <li><%= link_to 'Iniciar Sesión', new_user_session_path, class:"dropdown-item" %></li>
+                <li><%#= link_to 'editar usuario', edit_user_session_path, class:"dropdown-item" %></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= link_to 'Registro', new_user_registration_path, class:"dropdown-item" %></li>
+                <% end %>
+                
+
+            </ul>
+          </li>
+        </ul>
+    </div>
+  </div>
+</nav>
